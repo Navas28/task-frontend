@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { signupUser } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
+import { Lock, Mail, User } from "lucide-react";
 
 const SignUp = ({ onToggle }) => {
     const [name, setName] = useState("");
@@ -9,7 +10,7 @@ const SignUp = ({ onToggle }) => {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const { login } = useAuth();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const validateForm = () => {
         const newErrors = {};
@@ -32,7 +33,7 @@ const SignUp = ({ onToggle }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-           try {
+        try {
             const { token } = await signupUser({ name, email, password });
             localStorage.setItem("token", token);
 
@@ -48,62 +49,69 @@ const SignUp = ({ onToggle }) => {
             alert("Signup successful!");
 
             onToggle(); // Switch to sign-in form or redirect
-            navigate("/")
+            navigate("/");
         } catch (err) {
             alert(err.message || "Signup failed");
         }
     };
     return (
-        <div className="border-2 border-gray-300 rounded-md p-6 shadow-md bg-white max-w-md mx-auto">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-800">Create your account</h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                    <label className="block mb-1 font-medium text-gray-700">Name</label>
+        <div className="rounded-3xl p-8">
+            <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold">Create Account</h2>
+            </div>
+
+            <div className="space-y-6">
+                <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">
+                        <User size={20} />
+                    </span>
                     <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-11 pr-4 py-4 bg-gray-50 border-2 border-gray-200  focus:outline-none"
+                        placeholder="Name"
                     />
-                    {errors.name && <div className="text-red-600 mt-1 text-sm">{errors.name}</div>}
+                    {errors.name && <div className="text-red-500 mt-2 text-sm font-medium">{errors.name}</div>}
                 </div>
 
-                <div>
-                    <label className="block mb-1 font-medium text-gray-700">Email</label>
+                <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">
+                        <Mail size={20} />
+                    </span>
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-11 pr-4 py-4 bg-gray-50 border-2 border-gray-200  focus:outline-none"
+                        placeholder="Email"
                     />
-                    {errors.email && <div className="text-red-600 mt-1 text-sm">{errors.email}</div>}
+                    {errors.email && <div className="text-red-500 mt-2 text-sm font-medium">{errors.email}</div>}
                 </div>
 
-                <div>
-                    <label className="block mb-1 font-medium text-gray-700">Password</label>
+                <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500">
+                        <Lock size={20} />
+                    </span>
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full pl-11 pr-4 py-4 bg-gray-50 border-2 border-gray-200  focus:outline-none"
+                        placeholder="Password"
                     />
-                    {errors.password && <div className="text-red-600 mt-1 text-sm">{errors.password}</div>}
+                    {errors.password && <div className="text-red-500 mt-2 text-sm font-medium">{errors.password}</div>}
                 </div>
 
-                <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-                >
-                    Sign Up
-                </button>
-            </form>
-
-            <p className="mt-6 text-center text-gray-700">
-                Already have an account?{" "}
-                <button onClick={onToggle} className="text-blue-600 hover:underline font-semibold">
-                    Sign In
-                </button>
-            </p>
+                <div className="flex justify-center">
+                    <button
+                        onClick={handleSubmit}
+                        className="w-1/2 text-white py-4 rounded-4xl font-semibold text-lg bg-yellow"
+                    >
+                        Sign Up
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
