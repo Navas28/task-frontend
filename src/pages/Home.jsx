@@ -19,7 +19,7 @@ const Home = () => {
 
     const [categories, setCategories] = useState(() => {
         const saved = localStorage.getItem("categories");
-        return saved ? JSON.parse(saved) : [{ name: "Laptop", subcategories: [] }];
+        return saved ? JSON.parse(saved) : [{ name: "Laptop", subcategories: ["HP", "Lenovo", "Acer", "Dell", "Apple", "MSI"] }];
     });
     const productsPerPage = 4;
 
