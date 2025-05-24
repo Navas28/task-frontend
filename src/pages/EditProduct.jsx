@@ -49,52 +49,69 @@ const EditProduct = () => {
     if (error) return <p>{error}</p>;
     if (!product) return <p>Product not found</p>;
     return (
-        <div className="p-6 max-w-xl mx-auto">
-            <Breadcrumbs/>
-            <h1 className="text-2xl font-bold mb-4">Edit Product</h1>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                    type="text"
-                    name="title"
-                    value={product.title}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
-                    placeholder="Product Title"
-                />
-                <textarea
-                    name="description"
-                    value={product.description}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
-                    placeholder="Description"
-                    rows={5}
-                />
-                <input
-                    type="text"
-                    name="subcategory"
-                    value={product.subcategory}
-                    onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
-                    placeholder="Subcategory"
-                />
-                {product.images.map((img, index) => (
+          <div className="p-6 max-w-2xl mx-auto">
+            <Breadcrumbs />
+            <h1 className="text-3xl font-bold mb-6 text-center">Edit Product</h1>
+            <form onSubmit={handleSubmit} className="space-y-5 bg-white p-6 rounded-xl shadow border">
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Product Title</label>
                     <input
-                        key={index}
                         type="text"
-                        name={`image-${index}`}
-                        value={img}
-                        onChange={(e) => {
-                            const updatedImages = [...product.images];
-                            updatedImages[index] = e.target.value;
-                            setProduct({ ...product, images: updatedImages });
-                        }}
-                        className="w-full p-2 border border-gray-300 rounded"
-                        placeholder={`Image URL ${index + 1}`}
+                        name="title"
+                        value={product.title}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Product Title"
                     />
-                ))}
+                </div>
 
-                {/* Add inputs for variants if needed */}
-                <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                    <textarea
+                        name="description"
+                        value={product.description}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Description"
+                        rows={5}
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Subcategory</label>
+                    <input
+                        type="text"
+                        name="subcategory"
+                        value={product.subcategory}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Subcategory"
+                    />
+                </div>
+
+                <div className="space-y-3">
+                    <label className="block text-sm font-medium text-gray-700">Images</label>
+                    {product.images.map((img, index) => (
+                        <input
+                            key={index}
+                            type="text"
+                            name={`image-${index}`}
+                            value={img}
+                            onChange={(e) => {
+                                const updatedImages = [...product.images];
+                                updatedImages[index] = e.target.value;
+                                setProduct({ ...product, images: updatedImages });
+                            }}
+                            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder={`Image URL ${index + 1}`}
+                        />
+                    ))}
+                </div>
+
+                <button
+                    type="submit"
+                    className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
+                >
                     Update Product
                 </button>
             </form>

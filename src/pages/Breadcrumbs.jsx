@@ -21,7 +21,6 @@ const Breadcrumbs = () => {
 
                     return (
                         <span key={to} className="flex items-center space-x-1">
-                            <ArrowRight />
                             {isLast ? (
                                 <span>{decodedURIComponent(value)}</span>
                             ) : (

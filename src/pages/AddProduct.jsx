@@ -49,79 +49,99 @@ const AddProduct = ({ onClose }) => {
         }
     };
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white p-6 rounded-xl w-[500px] max-h-[90vh] overflow-y-auto">
-                <h2 className="text-xl font-bold mb-4">Add Product</h2>
+       <div className="fixed inset-0 rounded-md bg-gray-500 flex justify-center items-center">
+            <div className="bg-white p-6 rounded-xl max-w-9xl max-h-[90vh] overflow-y-auto">
+                <h2 className="text-xl font-bold mb-6 text-center">Add Product</h2>
 
-                <input
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="w-full p-2 border rounded mb-4"
-                />
+                {/* Title */}
+                <div className="grid grid-cols-3 items-center gap-4 mb-4">
+                    <label className="font-medium">Title:</label>
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="col-span-2 p-2 border rounded"
+                    />
+                </div>
 
+                {/* Variants */}
                 <div className="mb-4">
-                    <p className="font-semibold mb-2">Variants (RAM + Price + Quantity)</p>
+                    <p className="font-medium mb-2">Variants:</p>
                     {variants.map((v, i) => (
-                        <div key={i} className="flex gap-2 mb-2">
+                        <div key={i} className="grid grid-cols-3 gap-2 mb-2">
                             <input
                                 placeholder="RAM"
                                 value={v.ram}
                                 onChange={(e) => handleVariantChange(i, "ram", e.target.value)}
-                                className="flex-1 p-1 border rounded"
+                                className="p-1 border rounded"
                             />
                             <input
                                 placeholder="Price"
                                 value={v.price}
                                 onChange={(e) => handleVariantChange(i, "price", e.target.value)}
-                                className="flex-1 p-1 border rounded"
+                                className="p-1 border rounded"
                             />
                             <input
                                 placeholder="Quantity"
                                 value={v.quantity}
                                 onChange={(e) => handleVariantChange(i, "quantity", e.target.value)}
-                                className="flex-1 p-1 border rounded"
+                                className="p-1 border rounded"
                             />
                         </div>
                     ))}
-                    <button onClick={addVariant} className="text-blue-600 underline text-sm">
+                    <button onClick={addVariant} className="bg-black text-white px-3 py-3 rounded-md">
                         + Add Variant
                     </button>
                 </div>
 
-                <input
-                    type="text"
-                    placeholder="Subcategory"
-                    value={subcategory}
-                    onChange={(e) => setSubcategory(e.target.value)}
-                    className="w-full p-2 border rounded mb-4"
-                />
-
-                <textarea
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="w-full p-2 border rounded mb-4"
-                />
-
-                <p className="font-semibold mb-1">Image URLs (3)</p>
-                {[0, 1, 2].map((i) => (
+                {/* Subcategory */}
+                <div className="grid grid-cols-3 items-center gap-4 mb-4">
+                    <label className="font-medium">Subcategory:</label>
                     <input
-                        key={i}
                         type="text"
-                        placeholder={`Image ${i + 1}`}
-                        value={images[i]}
-                        onChange={(e) => handleImageChange(i, e.target.value)}
-                        className="w-full p-2 border rounded mb-2"
+                        value={subcategory}
+                        onChange={(e) => setSubcategory(e.target.value)}
+                        className="col-span-2 p-2 border rounded"
                     />
+                </div>
+
+                {/* Description */}
+                <div className="grid grid-cols-3 gap-4 mb-4">
+                    <label className="font-medium pt-2">Description:</label>
+                    <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="col-span-2 p-2 border rounded"
+                        rows={4}
+                    />
+                </div>
+
+                {/* Images */}
+                <p className="font-medium mb-2">Image URLs:</p>
+                {images.map((img, i) => (
+                    <div key={i} className="grid grid-cols-3 items-center gap-4 mb-2">
+                        <label className="font-medium">Image {i + 1}:</label>
+                        <input
+                            type="text"
+                            value={img}
+                            onChange={(e) => handleImageChange(i, e.target.value)}
+                            className="col-span-2 p-2 border rounded"
+                        />
+                    </div>
                 ))}
 
-                <div className="flex justify-between mt-4">
-                    <button onClick={onClose} className="px-4 py-2 bg-gray-400 text-white rounded">
+                {/* Buttons */}
+                <div className="flex justify-end gap-4 mt-6">
+                    <button
+                        onClick={onClose}
+                        className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+                    >
                         Cancel
                     </button>
-                    <button onClick={handleSubmit} className="px-4 py-2 bg-yellow-500 text-white rounded">
+                    <button
+                        onClick={handleSubmit}
+                        className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                    >
                         Add Product
                     </button>
                 </div>

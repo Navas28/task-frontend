@@ -29,8 +29,6 @@ const AllProducts = ({ products, loading, error, totalProducts, productsPerPage,
             <div className="grid gap-4 grid-cols-2">
                 {products.map((product) => {
                     const isWishlisted = wishlistItems.some((item) => item._id === product._id);
-
-                    // Get first image or fallback
                     const mainImage = product.images && product.images.length > 0 ? product.images[0] : "";
 
                     const price =
@@ -55,7 +53,7 @@ const AllProducts = ({ products, loading, error, totalProducts, productsPerPage,
 
                             <p className="text-gray-700">Price: ₹{price}</p>
 
-                            <div className="flex text-yellow-500">
+                            <div className="flex text-gray-500">
                                 <Star />
                                 <Star />
                                 <Star />

@@ -68,7 +68,7 @@ const Home = () => {
 
     return (
         <div className="flex items-end flex-col">
-            <div>
+            <div className="space-x-3 mt-4">
                 <button onClick={() => setShowModal(true)} className="px-3 py-2 bg-yellow text-white rounded-xl">
                     Add Category
                 </button>
@@ -97,7 +97,7 @@ const Home = () => {
                         ))}
                     </div>
 
-                    <div className="w-3/4">
+                    <div className="w-full">
                         <AllProducts
                             products={paginatedProducts}
                             loading={loading}
