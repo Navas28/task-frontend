@@ -12,7 +12,7 @@ const EditProduct = () => {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const response = await fetch(`http://localhost:2000/api/products/${productId}`);
+                const response = await fetch(`https://test-backend-z0wk.onrender.com/api/products/${productId}`);
                 const data = await response.json();
                 setProduct(data);
             } catch (error) {
@@ -31,7 +31,7 @@ const EditProduct = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`http://localhost:2000/api/products/${productId}`, {
+            const response = await fetch(`https://test-backend-z0wk.onrender.com/api/products/${productId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

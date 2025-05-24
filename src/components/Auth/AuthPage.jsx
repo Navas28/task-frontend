@@ -35,7 +35,6 @@ const AuthPage = () => {
                         </>
                     ) : (
                         <>
-                            {/* Text content */}
                             <div className="order-1 text-center lg:text-left space-y-6 bg-blue text-white p-10 h-full flex flex-col justify-center min-h-screen">
                                 <div>
                                     <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-white">Welcome Back</h1>

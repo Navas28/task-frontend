@@ -20,7 +20,7 @@ const ProductDetails = () => {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const response = await fetch(`http://localhost:2000/api/products/${productId}`);
+                const response = await fetch(`https://test-backend-z0wk.onrender.com/api/products/${productId}`);
                 if (!response.ok) throw new Error("Failed to fetch product details");
                 const data = await response.json();
                 setProduct(data);
@@ -52,7 +52,6 @@ const ProductDetails = () => {
         <div className="p-6 max-w-9xl mx-auto">
             <Breadcrumbs />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                {/* Left side: Images */}
                 <div className="col-span-1 flex flex-col gap-4 p-10">
                     <img
                         src={product.images[0]}
@@ -70,8 +69,7 @@ const ProductDetails = () => {
                         ))}
                     </div>
                 </div>
-
-                {/* Right side: Product Info */}
+        
                 <div className="col-span-2 flex flex-col gap-4 justify-center h-full">
                     <h1 className="text-3xl font-bold mb-6">{product.title}</h1>
 
@@ -89,8 +87,7 @@ const ProductDetails = () => {
                             </p>
                         </div>
                     )}
-
-                    {/* Quantity selector + Wishlist */}
+                   
                     <div className="flex items-center gap-6 mt-4">
                         <div className="flex items-center gap-3">
                             <h1>Quantity: </h1>
@@ -104,7 +101,6 @@ const ProductDetails = () => {
                         </div>
                     </div>
 
-                    {/* Action buttons */}
                     <div className="flex flex-wrap gap-4 mt-6">
                         <button
                             onClick={() => navigate(`/edit-product/${product._id}`)}

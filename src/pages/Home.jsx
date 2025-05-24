@@ -30,7 +30,7 @@ const Home = () => {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const response = await fetch("http://localhost:2000/api/products");
+                const response = await fetch("https://test-backend-z0wk.onrender.com/api/products");
                 if (!response.ok) throw new Error("Failed to fetch products");
                 const data = await response.json();
                 setProducts(data);

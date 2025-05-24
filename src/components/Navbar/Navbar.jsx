@@ -13,7 +13,7 @@ const Navbar = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:2000/api/products/")
+        fetch("https://test-backend-z0wk.onrender.com/api/products/")
             .then((response) => response.json())
             .then((data) => setProducts(data));
     }, []);

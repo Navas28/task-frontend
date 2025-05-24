@@ -37,8 +37,7 @@ const SignUp = ({ onToggle }) => {
             const { token } = await signupUser({ name, email, password });
             localStorage.setItem("token", token);
 
-            // Optionally fetch user details
-            const res = await fetch("http://localhost:2000/api/auth/me", {
+            const res = await fetch("https://test-backend-z0wk.onrender.com/api/auth/me", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:2000/api/auth";
+const API_BASE = "https://test-backend-z0wk.onrender.com/api/auth";
 
 // Get user data using token
 

@@ -23,10 +23,7 @@ const FavoriteSidebar = ({isOpen, onClose}) => {
           <p className="text-gray-500">No items in wishlist.</p>
         ) : (
           wishlistItems.map((item) => {
-            // Use first image from images array as thumbnail
             const thumbnail = item.images && item.images.length > 0 ? item.images[0] : "";
-
-            // Display price of first variant if available
             const price =
               item.variants && item.variants.length > 0
                 ? item.variants[0].price.toLocaleString()

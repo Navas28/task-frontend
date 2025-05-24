@@ -33,7 +33,7 @@ const AddProduct = ({ onClose }) => {
         };
 
         try {
-            const res = await fetch("http://localhost:2000/api/products/add", {
+            const res = await fetch("https://test-backend-z0wk.onrender.com/api/products/add", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(productData),
@@ -52,8 +52,7 @@ const AddProduct = ({ onClose }) => {
        <div className="fixed inset-0 rounded-md bg-gray-500 flex justify-center items-center">
             <div className="bg-white p-6 rounded-xl max-w-9xl max-h-[90vh] overflow-y-auto">
                 <h2 className="text-xl font-bold mb-6 text-center">Add Product</h2>
-
-                {/* Title */}
+         
                 <div className="grid grid-cols-3 items-center gap-4 mb-4">
                     <label className="font-medium">Title:</label>
                     <input
@@ -64,7 +63,6 @@ const AddProduct = ({ onClose }) => {
                     />
                 </div>
 
-                {/* Variants */}
                 <div className="mb-4">
                     <p className="font-medium mb-2">Variants:</p>
                     {variants.map((v, i) => (
@@ -94,7 +92,6 @@ const AddProduct = ({ onClose }) => {
                     </button>
                 </div>
 
-                {/* Subcategory */}
                 <div className="grid grid-cols-3 items-center gap-4 mb-4">
                     <label className="font-medium">Subcategory:</label>
                     <input
@@ -105,7 +102,6 @@ const AddProduct = ({ onClose }) => {
                     />
                 </div>
 
-                {/* Description */}
                 <div className="grid grid-cols-3 gap-4 mb-4">
                     <label className="font-medium pt-2">Description:</label>
                     <textarea
@@ -115,8 +111,7 @@ const AddProduct = ({ onClose }) => {
                         rows={4}
                     />
                 </div>
-
-                {/* Images */}
+    
                 <p className="font-medium mb-2">Image URLs:</p>
                 {images.map((img, i) => (
                     <div key={i} className="grid grid-cols-3 items-center gap-4 mb-2">
@@ -129,8 +124,7 @@ const AddProduct = ({ onClose }) => {
                         />
                     </div>
                 ))}
-
-                {/* Buttons */}
+           
                 <div className="flex justify-end gap-4 mt-6">
                     <button
                         onClick={onClose}
