@@ -19,7 +19,9 @@ const Home = () => {
 
     const [categories, setCategories] = useState(() => {
         const saved = localStorage.getItem("categories");
-        return saved ? JSON.parse(saved) : [{ name: "Laptop", subcategories: ["HP", "Lenovo", "Acer", "Dell", "Apple", "MSI"] }];
+        return saved
+            ? JSON.parse(saved)
+            : [{ name: "Laptop", subcategories: ["HP", "Lenovo", "Acer", "Dell", "Apple", "MSI"] }];
     });
     const productsPerPage = 4;
 
@@ -77,6 +79,15 @@ const Home = () => {
                 </button>
                 <button onClick={() => setShowAddProductModal(true)} className="px-3 py-2 bg-yellow text-white rounded-xl">
                     Add Products
+                </button>
+                <button
+                    onClick={() => {
+                        localStorage.removeItem("categories");
+                        window.location.reload();
+                    }}
+                    className="px-4 py-2 bg-red-600 text-white rounded"
+                >
+                    Clear Categories
                 </button>
             </div>
             <div>
